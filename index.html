@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<body>
+	<div id="loading-screen">
+		<div id="loading-screen-content">
+			<h1 id="loading-text">loading..</h1>
+			<p id="loading-progress">0%</p>
+		</div>
+	</div>
+
+	<div id="header">
+		<div id="header-container">
+			<div id="collections">
+				<div class="collection">
+					<img src="images/summer-01.png" />
+					<p>Pleasant</p>
+				</div>
+				<div class="collection">
+					<img src="images/summer-02.png" />
+					<p>Electronic</p>
+				</div>
+				<div class="collection">
+					<img src="images/summer-03.png" />
+					<p>Nature</p>
+				</div>
+				<div class="collection">
+					<img src="images/summer-04.png" />
+					<p>Comedy</p>
+				</div>
+				<div class="collection">
+					<img src="images/summer-05.png" />
+					<p>Radio</p>
+				</div>
+				<div class="collection">
+					<img src="images/summer-06.png" />
+					<p>Musical</p>
+				</div>
+				<div class="collection">
+					<img src="images/summer-07.png" />
+					<p>Spongebob</p>
+				</div>
+				<div class="collection">
+					<img src="images/summer-08.png" />
+					<p>Adventure Time</p>
+				</div>
+			</div>
+			
+		</div>
+		<div id="header-toggle"></div>
+	</div>
+	
+	<div id="palette">
+		<div id="palette-container">
+		</div>
+		<div id="palette-buttons">
+			<img id="play-button" src="images/play.png" />
+		</div>
+		<div id="palette-toggle"></div>
+	</div>
+	
+	<div id="controls">
+		<div id="controls-container">
+			<div class="control">
+				<label for="scan-speed">Scan Speed</label>
+				<input id="scan-speed" type="range" min="1" max="500" value="250" />
+				<p id="scan-speed-value"></p>
+			</div>
+			
+			<div class="control">
+				<label for="pixel-diff">Pixel Difference</label>
+				<input id="pixel-diff" type="range" min="1" max="100" value="1" />
+				<p id="pixel-diff-value"></p>
+			</div>
+			
+			<div class="control">
+				<label for="cluster-spread">Cluster Spread</label>
+				<input id="cluster-spread" type="range" min="1" max="100" value="10" />
+				<p id="cluster-spread-value"></p>
+			</div>
+			
+			<div class="control">
+				<label for="min-cluster-points">Min. Cluster Points</label>
+				<input id="min-cluster-points" type="range" min="1" max="40" value="3" />
+				<p id="min-cluster-points-value"></p>
+			</div>
+			
+			<div class="control">
+				<label for="debug-draw">Debug Draw</label>
+				<input id="debug-draw" type="checkbox" value="false" />
+			</div>
+		</div>
+		<div id="controls-toggle"></div>
+	</div>
+
+	<video id="video"></video>
+	<canvas id="video-canvas" width="320" height="240"></canvas>
+	<canvas id="canvas" width="1280" height="720"></canvas>
+	
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/cluster.js"></script>
+	<script type="text/javascript" src="js/scanner.js"></script>
+	<script type="text/javascript" src="js/audio.js"></script>
+	<script type="text/javascript" src="js/video.js"></script>
+	<script type="text/javascript" src="js/gui.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+</body>
+</html>
