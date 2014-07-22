@@ -234,5 +234,6 @@ function onSoundLoaded() {
 	if (numSoundsLoaded == numSounds) {
 		var loadScreen = document.getElementById("load-screen");
 		loadScreen.style.opacity = "0";
+		loadScreen.style.display = "none";
 	}
 }
