@@ -187,6 +187,10 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 	-webkit-border-radius: 4px;
 }
 
+.swatch:hover {
+	box-shadow: 0 0 4px white;
+}
+
 .swatch-reset {
 	float: right;
 }
