@@ -11,11 +11,17 @@ var controlsHidden = false;
 var paletteHidden  = false;
 
 function initGui() {
+	initLoadScreen();
 	initHeader();
 	initSoundPalette();
 	initCollectionButtons();
 	initControls();
 	initGlobalEvents();
+}
+
+function initLoadScreen() {
+	var loadScreen = document.getElementById("load-screen");
+	loadScreen.style.opacity = "1";
 }
 
 function initHeader() {
@@ -219,5 +225,14 @@ function togglePalette() {
 	} else {
 		palette.style.height = "48px";
 		palette.style.display = "block";
+	}
+}
+
+function onSoundLoaded() {
+	var loadProgress = document.getElementById("load-progress");
+	loadProgress.innerText = (++numSoundsLoaded / numSounds * 100).toFixed(0) + "%";
+	if (numSoundsLoaded == numSounds) {
+		var loadScreen = document.getElementById("load-screen");
+		loadScreen.style.opacity = "0";
 	}
 }

@@ -107,12 +107,20 @@ var SOUND_COLLECTIONS = {
 	],
 };
 
-var collections	   = [];
-var sounds 	   = [];
-var currentSound   = null;
+var collections	    = [];
+var sounds 	    = [];
+var currentSound    = null;
+var numSoundsLoaded = 0;
+var numSounds 	    = 0;
 
 function initAudio() {
+	initNumSounds();
 	initSoundList();
+}
+
+function initNumSounds() {
+	for (var collection in SOUND_COLLECTIONS)
+		numSounds += SOUND_COLLECTIONS[collection].length;
 }
 
 function initSoundList() {
@@ -148,6 +156,7 @@ Sound.prototype.load = function(url) {
 	request.onload = function() {
 		audioContext.decodeAudioData(request.response, function(buf) {
 			sound.buffer = buf;
+			onSoundLoaded();
 		}, function(err) { console.log(err) });
 	}
 	request.send();

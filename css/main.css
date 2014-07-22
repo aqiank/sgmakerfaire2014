@@ -8,28 +8,30 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 }
 
 /* Loading Screen */
-#loading-screen {
-	display: none;
+#load-screen {
 	position: fixed;
+	display: table;
 	width: 100%;
 	height: 100%;
 	z-index: 1000;
 	background: #ffff77;
 	text-align: center;
+	opacity: 1;
+	transition: opacity .4s;
 }
 
-#loading-screen-content {
+#load-screen-content {
 	display: table-cell;
 	vertical-align: middle;
 }
 
-#loading-text {
+#load-text {
 	font-size: 32px;
 	color: #777733;
 	margin: 8px;
 }
 
-#loading-progress {
+#load-progress {
 	color: #777733;
 	margin: 8px;
 }
