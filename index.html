@@ -90,6 +90,18 @@
 			</div>
 			
 			<div class="control">
+				<label for="low-pass-frequency">Low Pass Frequency</label>
+				<input id="low-pass-frequency" type="range" min="100" max="10000" value="10000" />
+				<p id="low-pass-frequency-value"></p>
+			</div>
+			
+			<div class="control">
+				<label for="volume-multiplier">Volume Multiplier</label>
+				<input id="volume-multiplier" type="range" min="0" max="500" value="1" />
+				<p id="volume-multiplier-value"></p>
+			</div>
+			
+			<div class="control">
 				<label for="debug-draw">Debug Draw</label>
 				<input id="debug-draw" type="checkbox" value="false" />
 			</div>
@@ -100,6 +112,10 @@
 	<video id="video"></video>
 	<canvas id="video-canvas" width="320" height="240"></canvas>
 	<canvas id="canvas" width="1280" height="720"></canvas>
+	<div id="cropper">
+		<div id="top-left" class="crop-corner"></div>
+		<div id="bottom-right" class="crop-corner"></div>
+	</div>
 	
 	<script type="text/javascript" src="js/util.js"></script>
 	<script type="text/javascript" src="js/cluster.js"></script>

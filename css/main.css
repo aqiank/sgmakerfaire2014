@@ -149,6 +149,33 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 	z-index: 1;
 }
 
+#cropper {
+	position: absolute;
+	border: 1px solid white;
+}
+
+#top-left,
+#bottom-right {
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background: white;
+	cursor: pointer;
+	z-index: 2;
+}
+
+#top-left {
+	top: 0px;
+	left: 0px;
+}
+
+#bottom-right {
+	top: 0px;
+	left: 0px;
+	margin-left: -8px;
+	margin-top: -8px;
+}
+
 #palette {
 	background: #40ae73;
 	text-align: center;

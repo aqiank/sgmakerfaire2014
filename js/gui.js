@@ -142,6 +142,26 @@ function initControls() {
 		display.innerHTML = scanner.minClusterPoints;
 	};
 
+	range = document.getElementById("low-pass-frequency");
+	range.value = lowPassFreq;
+	display = document.getElementById("low-pass-frequency-value");
+	display.innerHTML = lowPassFreq;
+	range.oninput = function(e) {
+		display = document.getElementById("low-pass-frequency-value");
+		lowPassFreq = this.value;
+		display.innerHTML = lowPassFreq;
+	};
+
+	range = document.getElementById("volume-multiplier");
+	range.value = volumeMult * 100;
+	display = document.getElementById("volume-multiplier-value");
+	display.innerHTML = volumeMult;
+	range.oninput = function(e) {
+		display = document.getElementById("volume-multiplier-value");
+		volumeMult = this.value * 0.01;
+		display.innerHTML = volumeMult;
+	};
+
 	var checkbox = document.getElementById("debug-draw");
 	checkbox.checked = scanner.debugDraw;
 	checkbox.onchange = function(e) {

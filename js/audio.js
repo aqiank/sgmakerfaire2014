@@ -113,6 +113,9 @@ var currentSound    = null;
 var numSoundsLoaded = 0;
 var numSounds 	    = 0;
 
+var lowPassFreq = 1000;
+var volumeMult = 1;
+
 function initAudio() {
 	initNumSounds();
 	initSoundList();
@@ -140,6 +143,7 @@ function initSoundList() {
 function Sound(folder, name) {
 	this.name     = name;
 	this.buffer   = null;
+	this.filter   = null;
 	this.gain     = null;
 	this.source   = null;
 	this.playing  = false;
@@ -166,14 +170,19 @@ Sound.prototype.play = function(volume, rate) {
 	if (this.playing)
 		return;
 
+	volume = ((typeof volume == "undefined") ? 1 : volume) * volumeMult;
 	this.gain = audioContext.createGain();
-	this.gain.gain.value = (typeof volume == "undefined") ? 1 : volume;
+	this.gain.gain.value = Math.max(0.1, volume);
 	this.gain.connect(audioContext.destination);
+
+	this.filter = audioContext.createBiquadFilter();
+	this.filter.frequency.value = (rate * rate) * lowPassFreq;
+	this.filter.type = "lowpass";
+	this.filter.connect(this.gain);
 
 	this.source = audioContext.createBufferSource();
 	this.source.buffer = this.buffer;
-	this.source.connect(this.gain);
-	this.source.playbackRate.value = (typeof rate == "undefined") ? 1 : rate;
+	this.source.connect(this.filter);
 
 	this.source.container = this;
 	this.source.onended = function() {

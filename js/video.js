@@ -4,6 +4,14 @@ var canvas 	 = null;
 var context 	 = null;
 var videoContext = null;
 
+// Cropper
+var cropper	 = null;
+var whichCorner  = null;
+var cropX	 = 0;
+var cropY	 = 0;
+var cropWidth	 = 0;
+var cropHeight	 = 0;
+
 // Time
 var previousTime = 0;
 var deltaTime 	 = 0;
@@ -31,8 +39,10 @@ function tick(time) {
 	if (context == null)
 		context = canvas.getContext("2d");
 
+	updateCropper();
 	scanner.run(deltaTime);
 	runRipples();
+	drawCropper();
 	requestAnimationFrame(tick);
 }
 
@@ -84,6 +94,8 @@ function initVideo() {
 		}
 	};
 
+	initCropper();
+
 	navigator.getUserMedia(
 		{
 			video: { 
@@ -112,6 +124,82 @@ function initVideo() {
 			console.log("An error occured! " + err);
 		}
 	);
+}
+
+function initCropper() {
+	cropWidth = canvas.width;
+	cropHeight = canvas.height;
+
+	var topLeft = document.getElementById("top-left");
+	topLeft.style.left = "0px";
+	topLeft.style.top = "0px";
+
+	var bottomRight = document.getElementById("bottom-right");
+	bottomRight.style.left = cropWidth + "px";
+	bottomRight.style.top = cropHeight + "px";
+
+	canvas.onmousemove = function(e) {
+		if (whichCorner == null)
+			return;
+
+		var posY = this.getBoundingClientRect().top;
+		var corner = document.getElementById(whichCorner);
+		corner.style.left = e.clientX + "px";
+		corner.style.top = e.clientY - posY + "px";
+	}; 
+
+	canvas.onmouseup = function(e) {
+		whichCorner = null;
+	};
+
+	var cropCorners = document.getElementsByClassName("crop-corner");
+	Array.prototype.forEach.call(cropCorners, function(el, i) {
+		el.onmousedown = function(e) {
+			whichCorner = this.id;
+		};
+
+		el.onmouseup = function(e) {
+			whichCorner = null;
+		};
+	});
+}
+
+function updateCropper() {
+	var topLeft = document.getElementById("top-left");
+	var bottomRight = document.getElementById("bottom-right");
+
+	var x1 = parseInt(topLeft.style.left);
+	var y1 = parseInt(topLeft.style.top);
+	var x2 = parseInt(bottomRight.style.left);
+	var y2 = parseInt(bottomRight.style.top);
+
+	var tmp;
+	if (x2 < x1) {
+		tmp = x1;
+		x1 = x2;
+		x2 = tmp;
+	}
+	
+	if (y2 < y1) {
+		tmp = y1;
+		y1 = y2;
+		y2 = tmp;
+	}
+
+	cropX = x1;
+	cropY = y1;
+	cropWidth = x2 - cropX;
+	cropHeight = y2 - cropY;
+}
+
+function drawCropper() {
+	context.save();
+	context.strokeStyle = "white";
+	context.beginPath();
+	context.rect(cropX, cropY, cropWidth, cropHeight);
+	context.closePath();
+	context.stroke();
+	context.restore();
 }
 
 function Ripple(x, y, colorStr) {

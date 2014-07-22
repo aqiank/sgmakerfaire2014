@@ -96,14 +96,24 @@ Scanner.prototype.drawObjects = function() {
 }
 
 Scanner.prototype.runScanline = function() {
+	this.scanX += this.scanSpeed * deltaTime;
+	if (this.scanX >= cropX + cropWidth)
+		this.scanX = cropX;
+	else if (this.scanX < cropX)
+		return;
+
 	this.scanObjects();
 	this.drawScanline();
+	
 }
 
 // look for objects and trigger sounds when found
 Scanner.prototype.scanObjects = function() {
 	for (var i = 0; i < this.objects.length; i++) {
 		var obj = this.objects[i];
+		if (obj.x < cropX || obj.x >= cropX + cropWidth || obj.y < cropY || obj.y >= cropY + cropHeight)
+			continue;
+
 		if (obj.x < this.scanX && this.scanX < obj.x + obj.w) {
 			createRippleAt(obj);
 			this.playSound(obj);
@@ -114,16 +124,13 @@ Scanner.prototype.scanObjects = function() {
 Scanner.prototype.drawScanline = function() {
 	context.save();
 	context.strokeStyle = '#00aacc';
+
 	context.beginPath();
-	context.moveTo(this.scanX, 0);
-	context.lineTo(this.scanX, canvas.height);
+	context.moveTo(this.scanX, cropY);
+	context.lineTo(this.scanX, cropY + cropHeight);
 	context.stroke();
-
-	this.scanX += this.scanSpeed * deltaTime;
-	if (this.scanX >= canvas.width)
-		this.scanX = 0;
-
 	context.closePath();
+
 	context.restore();
 }
 
@@ -147,7 +154,7 @@ Scanner.prototype.playSound = function(obj) {
 		var sound = sounds[el.soundName];
 		if (obj.colorStr == soundColorStr && !sound.isPlaying()) {
 			var volume = obj.h * 0.002;
-			var rate = 1 - obj.y / canvas.height;
+			var rate = 1 - (obj.y - cropY) / cropHeight;
 			sound.play(volume, rate);
 		}
 	});
