@@ -18,6 +18,51 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 	text-align: center;
 	opacity: 1;
 	transition: opacity .4s;
+
+	-moz-animation-duration: 10s;
+	-moz-animation-name: colorloop;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-direction: normal;
+	-webkit-animation-duration: 10s;
+	-webkit-animation-name: colorloop;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: normal;
+}
+
+@-moz-keyframes colorloop {
+	from {
+		background: #ffe448;
+	}
+
+	33% {
+		background: #89c6cd;
+	}
+
+	66% {
+		background: #50be83;
+	}
+
+	to {
+		background: #ffe448;
+	}
+}
+
+@-webkit-keyframes colorloop {
+	from {
+		background: #ffe448;
+	}
+
+	33% {
+		background: #89c6cd;
+	}
+
+	66% {
+		background: #50be83;
+	}
+
+	to {
+		background: #ffe448;
+	}
 }
 
 #load-screen-content {
@@ -27,12 +72,12 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 
 #load-text {
 	font-size: 32px;
-	color: #777733;
+	color: #222222;
 	margin: 8px;
 }
 
 #load-progress {
-	color: #777733;
+	color: #222222;
 	margin: 8px;
 }
 
