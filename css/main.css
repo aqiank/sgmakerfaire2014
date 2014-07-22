@@ -100,22 +100,14 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 	cursor: pointer;
 }
 
-#header-container {
-	height: 116px;
-	transition: height .4s;
-}
-
 #collections {
 	display: inline-block;
-	width: auto;
-	height: auto;
 }
 
 .collection {
 	display: inline-block;
 	cursor: pointer;
 	width: 128px;
-	height: auto;
 	padding: 16px 0;
 	transition: background .4s;
 }
@@ -160,11 +152,6 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 #palette {
 	background: #40ae73;
 	text-align: center;
-}
-
-#palette-container {
-	height: 48px;
-	transition: height .4s;
 }
 
 #palette-buttons {
@@ -220,8 +207,6 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 
 #controls-container {
 	display: inline-block;
-	height: 100px;
-	transition: height .4s, opacity .4s;
 }
 
 .control {

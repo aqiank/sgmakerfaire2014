@@ -190,12 +190,12 @@ function toggleHeader() {
 
 	headerHidden = !headerHidden;
 	if (headerHidden) {
+		header.style.height = "0";
 		forEachElement(".collection", function(el, i) {
 			el.style.display = "none";
 		});
-		header.style.height = "0px";
 	} else {
-		header.style.height = "116px";
+		header.style.height = "auto";
 		forEachElement(".collection", function(el, i) {
 			el.style.display = "inline-block";
 		});
@@ -207,10 +207,10 @@ function toggleControls() {
 
 	controlsHidden = !controlsHidden;
 	if (controlsHidden) {
-		controls.style.height = "0px";
+		controls.style.height = "0";
 		controls.style.display = "none";
 	} else {
-		controls.style.height = "128px";
+		controls.style.height = "auto";
 		controls.style.display = "block";
 	}
 }
@@ -220,10 +220,10 @@ function togglePalette() {
 
 	paletteHidden = !paletteHidden;
 	if (paletteHidden) {
-		palette.style.height = "0px";
+		palette.style.height = "0";
 		palette.style.display = "none";
 	} else {
-		palette.style.height = "48px";
+		palette.style.height = "auto";
 		palette.style.display = "block";
 	}
 }
