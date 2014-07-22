@@ -79,7 +79,7 @@ function setCurrentCollection(idx) {
 function addSwatch(name) {
 	var swatch = document.createElement("div");
 	swatch.className = "swatch";
-	swatch.innerText = name;
+	swatch.innerText = formatSoundName(name);
 	swatch.soundName = name;
 	swatch.style.background = "none";
 	swatch.onclick = function(e) {
@@ -236,4 +236,11 @@ function onSoundLoaded() {
 		loadScreen.style.opacity = "0";
 		loadScreen.style.display = "none";
 	}
+}
+
+function formatSoundName(name) {
+	name = name.replace(".wav", "");
+	name = name.replace(/_/g, " ");
+	name = name.replace(/[a-z]/g, function(match) { return match.toUpperCase(); });
+	return name;
 }
