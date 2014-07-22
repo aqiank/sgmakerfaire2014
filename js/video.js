@@ -146,7 +146,7 @@ function initCropper() {
 		var corner = document.getElementById(whichCorner);
 		corner.style.left = e.clientX + "px";
 		corner.style.top = e.clientY - posY + "px";
-	}; 
+	};
 
 	canvas.onmouseup = function(e) {
 		whichCorner = null;
@@ -179,7 +179,7 @@ function updateCropper() {
 		x1 = x2;
 		x2 = tmp;
 	}
-	
+
 	if (y2 < y1) {
 		tmp = y1;
 		y1 = y2;
@@ -202,12 +202,12 @@ function drawCropper() {
 	context.restore();
 }
 
-function Ripple(x, y, colorStr) {
-	this.x = x;
-	this.y = y;
-	this.color = colorStr;
+function Ripple(obj) {
+	this.x = obj.x;
+	this.y = obj.y;
+	this.color = obj.colorStr;
 	this.radius = 1;
-	this.radiusSpeed = 100;
+	this.radiusSpeed = obj.h;
 	this.opacity = 1;
 	this.opacitySpeed = -1;
 	this.lifespan = 1; // seconds
@@ -244,5 +244,5 @@ Ripple.prototype.isDead = function() {
 }
 
 function createRippleAt(obj) {
-	ripples.push(new Ripple(obj.x, obj.y, obj.colorStr));
+	ripples.push(new Ripple(obj));
 }
