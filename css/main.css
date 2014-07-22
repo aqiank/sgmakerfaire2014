@@ -197,6 +197,7 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 	cursor: pointer;
 	transition: width .4s;
 	border: 1px solid #f3f3f3;
+	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 }
 
