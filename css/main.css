@@ -185,7 +185,6 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 
 .swatch {
 	display: inline-block;
-	width: 64px;
 	height: 16px;
 	margin: 8px;
 	padding: 8px;
@@ -199,10 +198,6 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 	border: 1px solid #f3f3f3;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
-}
-
-.swatch:hover {
-	width: 160px;
 }
 
 .swatch-reset {
