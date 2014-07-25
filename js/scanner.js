@@ -1,6 +1,6 @@
 function Scanner() {
 	this.scanX 	      = 0;
-	this.scanSpeed 	      = 200;
+	this.scanSpeed 	      = 25;
 	this.pixelDiff 	      = 0.02;
 	this.clusterSpread    = 50;
 	this.minClusterPoints = 20;

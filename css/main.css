@@ -157,8 +157,8 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 #top-left,
 #bottom-right {
 	position: absolute;
-	width: 8px;
-	height: 8px;
+	width: 16px;
+	height: 16px;
 	background: white;
 	cursor: pointer;
 	z-index: 2;
@@ -172,18 +172,13 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 #bottom-right {
 	top: 0px;
 	left: 0px;
-	margin-left: -8px;
-	margin-top: -8px;
+	margin-left: -16px;
+	margin-top: -16px;
 }
 
 #palette {
 	background: #40ae73;
 	text-align: center;
-}
-
-#palette-buttons {
-	padding: 8px;
-	display: none;
 }
 
 #play-button {
@@ -199,12 +194,10 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 
 .swatch {
 	display: inline-block;
-	height: 16px;
 	margin: 8px;
 	padding: 8px;
 	vertical-align: middle;
 	overflow: hidden;
-	color: #f3f3f3;
 	font-family: "Helvetica", "Arial", sans-serif;
 	text-align: center;
 	cursor: pointer;
@@ -214,12 +207,17 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 	-webkit-border-radius: 4px;
 }
 
+.swatch-label {
+	color: #f3f3f3;
+}
+
 .swatch:hover {
 	box-shadow: 0 0 4px white;
 }
 
-.swatch-reset {
-	float: right;
+.swatch-button {
+	display: inline-block;
+	padding: 8px;
 }
 
 #controls {

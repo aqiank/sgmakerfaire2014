@@ -36,17 +36,6 @@ function initSoundPalette() {
 	var toggle = document.getElementById("palette-toggle");
 	toggle.onclick = togglePalette;
 	togglePalette();
-
-
-	var button = document.getElementById("play-button");
-	button.onclick = function(e) {
-		if (currentSwatch == null)
-			return;
-
-		var name = currentSwatch.soundName;
-		sounds[name].play();
-		e.stopPropagation();
-	};
 }
 
 function initCollectionButtons() {
@@ -79,7 +68,6 @@ function setCurrentCollection(idx) {
 function addSwatch(name) {
 	var swatch = document.createElement("div");
 	swatch.className = "swatch";
-	swatch.innerText = formatSoundName(name);
 	swatch.soundName = name;
 	swatch.style.background = "none";
 	swatch.onclick = function(e) {
@@ -88,12 +76,31 @@ function addSwatch(name) {
 		this.style.border = "2px solid #ffff00";
 		currentSwatch = this;
 
-		var paletteButtons = document.getElementById("palette-buttons");
-		paletteButtons.style.display = "block";
-
 		e.stopPropagation();
 	};
 
+	var p = document.createElement("p");
+	p.innerText = formatSoundName(name);
+	p.className = "swatch-label";
+
+	var resetButton = document.createElement("img");
+	resetButton.src = "../images/reset.png";
+	resetButton.className = "swatch-button";
+	resetButton.onclick = function(e) {
+		this.parentNode.style.background = "none";
+		e.stopPropagation();
+	};
+
+	var playButton = document.createElement("img");
+	playButton.src = "../images/play.png";
+	playButton.className = "swatch-button";
+	playButton.onclick = function(e) {
+		sounds[this.parentNode.soundName].play();
+	};
+
+	swatch.appendChild(p);
+	swatch.appendChild(resetButton);
+	swatch.appendChild(playButton);
 	palette.appendChild(swatch);
 }
 
@@ -198,9 +205,6 @@ function initGlobalEvents() {
 		if (currentSwatch != null) {
 			currentSwatch.style.border = "1px solid #f3f3f3";
 			currentSwatch = null;
-
-			var paletteButtons = document.getElementById("palette-buttons");
-			paletteButtons.style.display = "none";
 		}
 	};
 }
