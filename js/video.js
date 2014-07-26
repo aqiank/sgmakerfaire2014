@@ -203,8 +203,8 @@ function drawCropper() {
 }
 
 function Ripple(obj) {
-	this.x = obj.x;
-	this.y = obj.y;
+	this.x = obj.x + obj.w / 2;
+	this.y = obj.y + obj.h / 2;
 	this.color = obj.colorStr;
 	this.radius = 1;
 	this.radiusSpeed = obj.h;
