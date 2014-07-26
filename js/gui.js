@@ -263,7 +263,7 @@ function onSoundLoaded() {
 }
 
 function formatSoundName(name) {
-	name = name.replace(".wav", "");
+	name = name.replace(".mp3", "");
 	name = name.replace(/_/g, " ");
 	name = name.replace(/[a-z]/g, function(match) { return match.toUpperCase(); });
 	return name;
