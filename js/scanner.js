@@ -8,6 +8,8 @@ function Scanner() {
 	this.objects 	      = [];
 	this.prevObjects      = [];
 	this.debugDraw	      = false;
+	this.gradientWidth    = 100;
+	this.gradient 	      = null;
 }
 
 // main scanner routine
@@ -123,13 +125,24 @@ Scanner.prototype.scanObjects = function() {
 
 Scanner.prototype.drawScanline = function() {
 	context.save();
-	context.strokeStyle = '#00aacc';
+	context.translate(this.scanX, cropY);
 
+	context.strokeStyle = '#00aacc';
 	context.beginPath();
-	context.moveTo(this.scanX, cropY);
-	context.lineTo(this.scanX, cropY + cropHeight);
+	context.moveTo(0, 0);
+	context.lineTo(0, cropHeight);
 	context.stroke();
 	context.closePath();
+
+	if (this.scanGradient == null) {
+		this.gradient = context.createLinearGradient(-this.gradientWidth / 2, 0, this.gradientWidth / 2, 0);
+		this.gradient.addColorStop(0, "rgba(0,0,0,0)");
+		this.gradient.addColorStop(0.5, "rgba(0, 170, 204, 1)");
+		this.gradient.addColorStop(1, "rgba(0,0,0,0)");
+	}
+
+	context.fillStyle = this.gradient;
+	context.fillRect(-this.gradientWidth / 2, 0, this.gradientWidth, cropHeight);
 
 	context.restore();
 }
