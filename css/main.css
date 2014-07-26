@@ -95,7 +95,6 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 
 #header-toggle {
 	width: 100%;
-	height: 8px;
 	background: #89c6cd;
 	cursor: pointer;
 }
@@ -187,7 +186,6 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 
 #palette-toggle {
 	width: 100%;
-	height: 8px;
 	background: #50be83;
 	cursor: pointer;
 }
@@ -229,7 +227,6 @@ h1, h2, h3, h4, h5, h6, p, span, button, select {
 
 #controls-toggle {
 	width: 100%;
-	height: 8px;
 	background: #ffe448;
 	cursor: pointer;
 }
