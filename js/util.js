@@ -128,7 +128,7 @@ function hsvDiff(A, B, minV) {
 }
 
 function hslDiff(A, B) {
-	if (A.l < 0.25 || A.l > 0.75)
+	if (A.l < 0.1 || A.l > 0.9)
 		return 1;
 	else
 		return (Math.abs(A.h - B.h) + Math.abs(A.s - B.s)) / 2;
