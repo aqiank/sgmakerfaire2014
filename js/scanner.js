@@ -141,9 +141,9 @@ Scanner.prototype.drawScanline = function() {
 
 	if (this.scanGradient == null) {
 		this.gradient = context.createLinearGradient(-this.gradientWidth / 2, 0, this.gradientWidth / 2, 0);
-		this.gradient.addColorStop(0, "rgba(0,0,0,0)");
+		this.gradient.addColorStop(0, "rgba(0, 170, 204, 0)");
 		this.gradient.addColorStop(0.5, "rgba(0, 170, 204, 1)");
-		this.gradient.addColorStop(1, "rgba(0,0,0,0)");
+		this.gradient.addColorStop(1, "rgba(0, 170, 204, 0)");
 	}
 
 	context.fillStyle = this.gradient;
