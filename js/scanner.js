@@ -171,9 +171,9 @@ Scanner.prototype.playSound = function(obj) {
 
 		var sound = sounds[el.soundName];
 		if (obj.colorStr == soundColorStr && !sound.isPlaying()) {
-			var volume = obj.h * 0.002;
+			var volume = Math.max(0.5, obj.h * 0.002);
 			var rate = 1 - (obj.y - cropY) / cropHeight;
-			sound.play(volume, rate);
+			sound.play(volume, 1);
 		}
 	});
 }
