@@ -3,15 +3,15 @@ var audioContext = new (window.AudioContext || window.webkitAudioContext)();
 var SOUND_DIR 	= "../sounds/";
 var SOUND_COLLECTIONS = {
 	"Collection 1 (Pleasant)": [
-		"aurora_bells.mp3",
-		"aurora_bells_2.mp3",
-		"aurora_chords.mp3",
-		"drum_2beats.mp3",
-		"drum_4beats.mp3",
-		"piano_doe.mp3",
-		"piano_mi.mp3",
-		"piano_so.mp3",
-		"shimmer_doemi.mp3",
+		"aurora(bells).mp3",
+		"aurora(bells2).mp3",
+		"aurora(chords).mp3",
+		"drum(2beats).mp3",
+		"drum(4beats).mp3",
+		"piano(doe).mp3",
+		"piano(mi).mp3",
+		"piano(so).mp3",
+		"shimmer(doemi).mp3",
 		"tick(4beats).mp3",
 	],
 
@@ -55,15 +55,15 @@ var SOUND_COLLECTIONS = {
 	],
 
 	"Collection 5 (Radio)": [
-		"alien_music.mp3",
-		"alien_ufo.mp3",
+		"alien.mp3",
+		"music.mp3",
 		"blizt.mp3",
 		"countdown.mp3",
-		"dial_dutdut.mp3",
+		"dutdut.mp3",
 		"hangup.mp3",
 		"longblizt.mp3",
-		"rhythmic_melody.mp3",
-		"siren_horn.mp3",
+		"rhythmic.mp3",
+		"horn.mp3",
 		"speed.mp3",
 	],
 
