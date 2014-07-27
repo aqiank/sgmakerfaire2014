@@ -1,15 +1,20 @@
 function Scanner() {
+	// core objects
+	this.groups 	      = [];
+	this.objects 	      = [];
+	this.prevObjects      = [];
+
+	// scan settings
 	this.scanX 	      = 0;
 	this.scanSpeed 	      = 25;
 	this.pixelDiff 	      = 0.02;
 	this.clusterSpread    = 50;
 	this.minClusterPoints = 20;
-	this.groups 	      = [];
-	this.objects 	      = [];
-	this.prevObjects      = [];
-	this.debugDraw	      = false;
+
+	// drawing properties
 	this.gradientWidth    = 100;
 	this.gradient 	      = null;
+	this.debugDraw	      = false;
 }
 
 // main scanner routine
